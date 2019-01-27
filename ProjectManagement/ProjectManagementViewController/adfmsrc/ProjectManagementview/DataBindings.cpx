@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.47" id="DataBindings"
+             SeparateXMLFiles="false" Package="ProjectManagementview" ClientType="Generic">
+  <pageMap>
+    <page path="/Signup.jsf" usageId="ProjectManagementview_SignupPageDef"/>
+    <page path="/Manager.jsf" usageId="ProjectManagementview_ManagerPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="ProjectManagementview_SignupPageDef" path="ProjectManagementview.pageDefs.SignupPageDef"/>
+    <page id="ProjectManagementview_ManagerPageDef" path="ProjectManagementview.pageDefs.ManagerPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="ProjectManagementmodel.BC.APPM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

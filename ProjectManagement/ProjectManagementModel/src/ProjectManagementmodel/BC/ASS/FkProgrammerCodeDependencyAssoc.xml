@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FkProgrammerCodeDependencyAssoc"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Users"
+    Cardinality="1"
+    Source="true"
+    Owner="ProjectManagementmodel.BC.EO.Users">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Users"/>
+      <Attr Name="_foreignKey" Value="ProjectManagementmodel.BC.EO.Users.PkUserId"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.EO.Users.UserId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="DependencyRequests"
+    Cardinality="-1"
+    Owner="ProjectManagementmodel.BC.EO.DependencyRequests">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="DependencyRequests"/>
+      <Attr Name="_foreignKey" Value="ProjectManagementmodel.BC.EO.DependencyRequests.FkProgrammerCodeDependency"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.EO.DependencyRequests.ProgrammerCode"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

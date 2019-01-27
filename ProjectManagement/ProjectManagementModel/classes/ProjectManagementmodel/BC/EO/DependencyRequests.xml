@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DependencyRequests"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DEPENDENCY_REQUESTS"
+  AliasName="DependencyRequests"
+  BindingStyle="OracleName"
+  RowClass="ProjectManagementmodel.BC.EO.DependencyRequestsImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="ProjectCode"
+    ColumnName="PROJECT_CODE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="DEPENDENCY_REQUESTS"/>
+  <Attribute
+    Name="RequestId"
+    ColumnName="REQUEST_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="DEPENDENCY_REQUESTS"/>
+  <Attribute
+    Name="DependencyId"
+    IsNotNull="true"
+    ColumnName="DEPENDENCY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="DEPENDENCY_REQUESTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="DependencyDescription"
+    Precision="500"
+    ColumnName="DEPENDENCY_DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DEPENDENCY_REQUESTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProgrammerCode"
+    ColumnName="PROGRAMMER_CODE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="DEPENDENCY_REQUESTS"/>
+  <Attribute
+    Name="Status"
+    Precision="10"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DEPENDENCY_REQUESTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="ProjectMaster"
+    Association="ProjectManagementmodel.BC.ASS.FkPorojectCodeDependencyAssoc"
+    AssociationEnd="ProjectManagementmodel.BC.ASS.FkPorojectCodeDependencyAssoc.ProjectMaster"
+    AssociationOtherEnd="ProjectManagementmodel.BC.ASS.FkPorojectCodeDependencyAssoc.DependencyRequests"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Users"
+    Association="ProjectManagementmodel.BC.ASS.FkProgrammerCodeDependencyAssoc"
+    AssociationEnd="ProjectManagementmodel.BC.ASS.FkProgrammerCodeDependencyAssoc.Users"
+    AssociationOtherEnd="ProjectManagementmodel.BC.ASS.FkProgrammerCodeDependencyAssoc.DependencyRequests"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="ProjectRequests"
+    Association="ProjectManagementmodel.BC.ASS.FkRequestIdDependenciesAssoc"
+    AssociationEnd="ProjectManagementmodel.BC.ASS.FkRequestIdDependenciesAssoc.ProjectRequests"
+    AssociationOtherEnd="ProjectManagementmodel.BC.ASS.FkRequestIdDependenciesAssoc.DependencyRequests"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="PkDependencyId"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_DEPENDENCY_ID"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.EO.DependencyRequests.DependencyId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkPorojectCodeDependency">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_PROJECT_CODE"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_POROJECT_CODE_DEPENDENCY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.EO.DependencyRequests.ProjectCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkProgrammerCodeDependency">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_USER_ID"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PROGRAMMER_CODE_DEPENDENCY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.EO.DependencyRequests.ProgrammerCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkRequestIdDependencies">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_REQUEST_ID"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_REQUEST_ID_DEPENDENCIES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.EO.DependencyRequests.RequestId"/>
+    </AttrArray>
+  </Key>
+</Entity>

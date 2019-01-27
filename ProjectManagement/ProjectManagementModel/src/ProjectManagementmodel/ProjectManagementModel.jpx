@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProjectManagementModel"
+  Version="12.1.3.10.47"
+  SeparateXMLFiles="true"
+  PackageName="ProjectManagementmodel">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../ProjectManagementModel.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_NamedConnection" Value="ProjectManagement"/>
+    <Attr Name="_appModuleNames0" Value="ProjectManagementmodel.BC.APPM.AppModule"/>
+  </DesignTime>
+  <Containee
+    Name="APPM"
+    PackageName="ProjectManagementmodel.BC.APPM"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="ASS"
+    PackageName="ProjectManagementmodel.BC.ASS"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="EO"
+    PackageName="ProjectManagementmodel.BC.EO"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="VL"
+    PackageName="ProjectManagementmodel.BC.VL"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="VO"
+    PackageName="ProjectManagementmodel.BC.VO"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="projectmanagementviewcontrollerBundle"
+           value="#{adfBundle['ProjectManagementview.ProjectManagementViewControllerBundle']}"/>
+    <af:document title="Manager.jsf" id="d1" binding="#{backingBeanScope.backing_Manager.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_Manager.m1}"/>
+        <f:event listener="#{SessionBean.isAuthenticatedManger}" type="preRenderView"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_Manager.f1}">
+            <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.backing_Manager.psl1}">
+                <f:facet name="center">
+                    <af:panelSplitter id="ps1" binding="#{backingBeanScope.backing_Manager.ps1}" orientation="vertical"
+                                      splitterPosition="300">
+                        <f:facet name="first">
+                            <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_Manager.pc1}">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2" binding="#{backingBeanScope.backing_Manager.t2}">
+                                        <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                                   text="#{projectmanagementviewcontrollerBundle.CREATE_PROJECT}"
+                                                   disabled="#{!bindings.CreateInsert.enabled}" id="b1"
+                                                   binding="#{backingBeanScope.backing_Manager.b1}" accessKey="C"/>
+                                        <af:button actionListener="#{bindings.Delete.execute}"
+                                                   text="#{projectmanagementviewcontrollerBundle.DELETE_PROJECT}"
+                                                   disabled="#{!bindings.Delete.enabled}" id="b2"
+                                                   binding="#{backingBeanScope.backing_Manager.b2}" accessKey="D"/>
+                                        <af:button actionListener="#{bindings.Commit.execute}"
+                                                   text="#{projectmanagementviewcontrollerBundle.SAVE}"
+                                                   disabled="#{!bindings.Commit.enabled}" id="b3"
+                                                   binding="#{backingBeanScope.backing_Manager.b3}" accessKey="S"/>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.ProjectMasterView1.collectionModel}" var="row"
+                                          rows="#{bindings.ProjectMasterView1.rangeSize}"
+                                          emptyText="#{bindings.ProjectMasterView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.ProjectMasterView1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.ProjectMasterView1.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.ProjectMasterView1.rangeSize}"
+                                          filterModel="#{bindings.ProjectMasterView1Query.queryDescriptor}"
+                                          queryListener="#{bindings.ProjectMasterView1Query.processQuery}"
+                                          filterVisible="true" varStatus="vs" id="t1" partialTriggers="::b1 ::b2"
+                                          binding="#{backingBeanScope.backing_Manager.t1}">
+                                    <af:column sortProperty="#{bindings.ProjectMasterView1.hints.ProjectCode.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectMasterView1.hints.ProjectCode.label}"
+                                               id="c1" width="150">
+                                        <af:inputText value="#{row.bindings.ProjectCode.inputValue}"
+                                                      label="#{bindings.ProjectMasterView1.hints.ProjectCode.label}"
+                                                      required="#{bindings.ProjectMasterView1.hints.ProjectCode.mandatory}"
+                                                      columns="#{bindings.ProjectMasterView1.hints.ProjectCode.displayWidth}"
+                                                      maximumLength="#{bindings.ProjectMasterView1.hints.ProjectCode.precision}"
+                                                      shortDesc="#{bindings.ProjectMasterView1.hints.ProjectCode.tooltip}"
+                                                      id="it1" readOnly="true">
+                                            <f:validator binding="#{row.bindings.ProjectCode.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProjectMasterView1.hints.ProjectCode.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectMasterView1.hints.ProjectName.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectMasterView1.hints.ProjectName.label}"
+                                               id="c2" width="200">
+                                        <af:inputText value="#{row.bindings.ProjectName.inputValue}"
+                                                      label="#{bindings.ProjectMasterView1.hints.ProjectName.label}"
+                                                      required="#{bindings.ProjectMasterView1.hints.ProjectName.mandatory}"
+                                                      columns="#{bindings.ProjectMasterView1.hints.ProjectName.displayWidth}"
+                                                      maximumLength="#{bindings.ProjectMasterView1.hints.ProjectName.precision}"
+                                                      shortDesc="#{bindings.ProjectMasterView1.hints.ProjectName.tooltip}"
+                                                      id="it2">
+                                            <f:validator binding="#{row.bindings.ProjectName.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectMasterView1.hints.ProjectDescription.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectMasterView1.hints.ProjectDescription.label}"
+                                               id="c3" width="250">
+                                        <af:inputText value="#{row.bindings.ProjectDescription.inputValue}"
+                                                      label="#{bindings.ProjectMasterView1.hints.ProjectDescription.label}"
+                                                      required="#{bindings.ProjectMasterView1.hints.ProjectDescription.mandatory}"
+                                                      columns="#{bindings.ProjectMasterView1.hints.ProjectDescription.displayWidth}"
+                                                      maximumLength="#{bindings.ProjectMasterView1.hints.ProjectDescription.precision}"
+                                                      shortDesc="#{bindings.ProjectMasterView1.hints.ProjectDescription.tooltip}"
+                                                      id="it3">
+                                            <f:validator binding="#{row.bindings.ProjectDescription.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectMasterView1.hints.Status.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectMasterView1.hints.Status.label}" id="c4">
+                                        <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                            label="#{row.bindings.Status.label}"
+                                                            required="#{bindings.ProjectMasterView1.hints.Status.mandatory}"
+                                                            shortDesc="#{bindings.ProjectMasterView1.hints.Status.tooltip}"
+                                                            id="soc1">
+                                            <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+                                            <f:validator binding="#{row.bindings.Status.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:panelCollection id="pc2" binding="#{backingBeanScope.backing_Manager.pc2}"
+                                                styleClass="AFStretchWidth">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t4" binding="#{backingBeanScope.backing_Manager.t4}">
+                                        <af:button actionListener="#{bindings.CreateInsert1.execute}"
+                                                   text="#{projectmanagementviewcontrollerBundle.CREATE_REQUEST}"
+                                                   disabled="#{!bindings.CreateInsert1.enabled}" id="b4"
+                                                   binding="#{backingBeanScope.backing_Manager.b4}"/>
+                                        <af:button actionListener="#{bindings.Delete1.execute}"
+                                                   text="#{projectmanagementviewcontrollerBundle.DELETE_REQUEST}"
+                                                   disabled="#{!bindings.Delete1.enabled}" id="b5"
+                                                   binding="#{backingBeanScope.backing_Manager.b5}"/>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.ProjectRequestsView3.collectionModel}" var="row"
+                                          rows="#{bindings.ProjectRequestsView3.rangeSize}"
+                                          emptyText="#{bindings.ProjectRequestsView3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.ProjectRequestsView3.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.ProjectRequestsView3.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.ProjectRequestsView3.rangeSize}"
+                                          filterModel="#{bindings.ProjectRequestsView3Query.queryDescriptor}"
+                                          queryListener="#{bindings.ProjectRequestsView3Query.processQuery}"
+                                          filterVisible="true" varStatus="vs" id="t3"
+                                          partialTriggers="::b4 ::b5 :::pc1:b3"
+                                          binding="#{backingBeanScope.backing_Manager.t3}">
+                                    <af:column sortProperty="#{bindings.ProjectRequestsView3.hints.RequestId.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectRequestsView3.hints.RequestId.label}"
+                                               id="c5">
+                                        <af:inputText value="#{row.bindings.RequestId.inputValue}"
+                                                      label="#{bindings.ProjectRequestsView3.hints.RequestId.label}"
+                                                      required="#{bindings.ProjectRequestsView3.hints.RequestId.mandatory}"
+                                                      columns="#{bindings.ProjectRequestsView3.hints.RequestId.displayWidth}"
+                                                      maximumLength="#{bindings.ProjectRequestsView3.hints.RequestId.precision}"
+                                                      shortDesc="#{bindings.ProjectRequestsView3.hints.RequestId.tooltip}"
+                                                      id="it4" readOnly="true">
+                                            <f:validator binding="#{row.bindings.RequestId.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProjectRequestsView3.hints.RequestId.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectRequestsView3.hints.RequestDescription.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectRequestsView3.hints.RequestDescription.label}"
+                                               id="c6" width="250">
+                                        <af:inputText value="#{row.bindings.RequestDescription.inputValue}"
+                                                      label="#{bindings.ProjectRequestsView3.hints.RequestDescription.label}"
+                                                      required="#{bindings.ProjectRequestsView3.hints.RequestDescription.mandatory}"
+                                                      columns="#{bindings.ProjectRequestsView3.hints.RequestDescription.displayWidth}"
+                                                      maximumLength="#{bindings.ProjectRequestsView3.hints.RequestDescription.precision}"
+                                                      shortDesc="#{bindings.ProjectRequestsView3.hints.RequestDescription.tooltip}"
+                                                      id="it5">
+                                            <f:validator binding="#{row.bindings.RequestDescription.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectRequestsView3.hints.ProgrammerCode.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectRequestsView3.hints.ProgrammerCode.label}"
+                                               id="c7">
+                                        <af:inputListOfValues id="programmerCodeId"
+                                                              popupTitle="Search and Select: #{bindings.ProjectRequestsView3.hints.ProgrammerCode.label}"
+                                                              value="#{row.bindings.ProgrammerCode.inputValue}"
+                                                              model="#{row.bindings.ProgrammerCode.listOfValuesModel}"
+                                                              required="#{bindings.ProjectRequestsView3.hints.ProgrammerCode.mandatory}"
+                                                              columns="#{bindings.ProjectRequestsView3.hints.ProgrammerCode.displayWidth}"
+                                                              shortDesc="#{bindings.ProjectRequestsView3.hints.ProgrammerCode.tooltip}"
+                                                              showRequired="true">
+                                            <f:validator binding="#{row.bindings.ProgrammerCode.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ProjectRequestsView3.hints.ProgrammerCode.format}"/>
+                                        </af:inputListOfValues>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectRequestsView3.hints.Status.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectRequestsView3.hints.Status.label}" id="c8">
+                                        <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                            label="#{row.bindings.Status.label}"
+                                                            required="#{bindings.ProjectRequestsView3.hints.Status.mandatory}"
+                                                            shortDesc="#{bindings.ProjectRequestsView3.hints.Status.tooltip}"
+                                                            id="soc2">
+                                            <f:selectItems value="#{row.bindings.Status.items}" id="si2"/>
+                                            <f:validator binding="#{row.bindings.Status.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectRequestsView3.hints.Assigned.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectRequestsView3.hints.Assigned.label}"
+                                               id="c9">
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{bindings.ProjectRequestsView3Query.queryDescriptor.filterConjunctionCriterion.criterionMap.Assigned.value}"
+                                                          id="id1" binding="#{backingBeanScope.backing_Manager.id1}">
+                                                <af:convertDateTime pattern="#{bindings.ProjectRequestsView3.hints.Assigned.format}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate value="#{row.bindings.Assigned.inputValue}"
+                                                      label="#{bindings.ProjectRequestsView3.hints.Assigned.label}"
+                                                      required="#{bindings.ProjectRequestsView3.hints.Assigned.mandatory}"
+                                                      columns="#{bindings.ProjectRequestsView3.hints.Assigned.displayWidth}"
+                                                      shortDesc="#{bindings.ProjectRequestsView3.hints.Assigned.tooltip}"
+                                                      id="id2" readOnly="true">
+                                            <f:validator binding="#{row.bindings.Assigned.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.ProjectRequestsView3.hints.Assigned.format}"/>
+                                        </af:inputDate>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectRequestsView3.hints.Started.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectRequestsView3.hints.Started.label}"
+                                               id="c10">
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{bindings.ProjectRequestsView3Query.queryDescriptor.filterConjunctionCriterion.criterionMap.Started.value}"
+                                                          id="id3" binding="#{backingBeanScope.backing_Manager.id3}">
+                                                <af:convertDateTime pattern="#{bindings.ProjectRequestsView3.hints.Started.format}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate value="#{row.bindings.Started.inputValue}"
+                                                      label="#{bindings.ProjectRequestsView3.hints.Started.label}"
+                                                      required="#{bindings.ProjectRequestsView3.hints.Started.mandatory}"
+                                                      columns="#{bindings.ProjectRequestsView3.hints.Started.displayWidth}"
+                                                      shortDesc="#{bindings.ProjectRequestsView3.hints.Started.tooltip}"
+                                                      id="id4" readOnly="true">
+                                            <f:validator binding="#{row.bindings.Started.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.ProjectRequestsView3.hints.Started.format}"/>
+                                        </af:inputDate>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.ProjectRequestsView3.hints.Completed.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.ProjectRequestsView3.hints.Completed.label}"
+                                               id="c11">
+                                        <f:facet name="filter">
+                                            <af:inputDate value="#{bindings.ProjectRequestsView3Query.queryDescriptor.filterConjunctionCriterion.criterionMap.Completed.value}"
+                                                          id="id5" binding="#{backingBeanScope.backing_Manager.id5}">
+                                                <af:convertDateTime pattern="#{bindings.ProjectRequestsView3.hints.Completed.format}"/>
+                                            </af:inputDate>
+                                        </f:facet>
+                                        <af:inputDate value="#{row.bindings.Completed.inputValue}"
+                                                      label="#{bindings.ProjectRequestsView3.hints.Completed.label}"
+                                                      required="#{bindings.ProjectRequestsView3.hints.Completed.mandatory}"
+                                                      columns="#{bindings.ProjectRequestsView3.hints.Completed.displayWidth}"
+                                                      shortDesc="#{bindings.ProjectRequestsView3.hints.Completed.tooltip}"
+                                                      id="id6" readOnly="true">
+                                            <f:validator binding="#{row.bindings.Completed.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.ProjectRequestsView3.hints.Completed.format}"/>
+                                        </af:inputDate>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelSplitter>
+                </f:facet>
+                <f:facet name="top">
+                    <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_Manager.pgl1}"
+                                         layout="horizontal" halign="end">
+                        <af:inputText value="#{sessionScope.username}" id="of1"
+                                      binding="#{backingBeanScope.backing_Manager.of1}"
+                                      inlineStyle="font-size:large;"
+                                      wrap="off" readOnly="true"/>
+                        <af:inputText id="it6" binding="#{backingBeanScope.backing_Manager.it6}"
+                                      value="#{sessionScope.usergroup}" readOnly="true" wrap="off"/>
+                        <af:button text="#{projectmanagementviewcontrollerBundle.LOG_OUT}" id="b6" binding="#{backingBeanScope.backing_Manager.b6}"
+                                   actionListener="#{SessionBean.logout}"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_Manager-->
+</f:view>

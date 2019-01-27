@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Login">
+    <page>/Login.jsf</page>
+  </view>
+  <view id="Signup">
+    <page>/Signup.jsf</page>
+  </view>
+  <view id="Manager">
+    <page>/Manager.jsf</page>
+  </view>
+  <view id="Programmer">
+    <page>/Programmer.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>Login</from-outcome>
+      <to-activity-id>Login</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__3">
+      <from-outcome>Signup</from-outcome>
+      <to-activity-id>Signup</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>Manager</from-outcome>
+      <to-activity-id>Manager</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__5">
+      <from-outcome>Programmer</from-outcome>
+      <to-activity-id>Programmer</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__6">
+    <managed-bean-name>backing_Login</managed-bean-name>
+    <managed-bean-class>ProjectManagementview.backing.Login</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1Login.jsf-->
+  </managed-bean>
+  <managed-bean id="__7">
+    <managed-bean-name>backing_Manager</managed-bean-name>
+    <managed-bean-class>ProjectManagementview.backing.Manager</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1Manager.jsf-->
+  </managed-bean>
+  <managed-bean id="__8">
+    <managed-bean-name>backing_Programmer</managed-bean-name>
+    <managed-bean-class>ProjectManagementview.backing.Programmer</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1Programmer.jsf-->
+  </managed-bean>
+  <managed-bean id="__9">
+    <managed-bean-name>backing_Signup</managed-bean-name>
+    <managed-bean-class>ProjectManagementview.backing.Signup</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1Signup.jsf-->
+  </managed-bean>
+  <managed-bean id="__10">
+    <managed-bean-name>SessionBean</managed-bean-name>
+    <managed-bean-class>ProjectManagementview.session.SessionBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

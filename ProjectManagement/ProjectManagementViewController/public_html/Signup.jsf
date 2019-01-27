@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Signup.jsf" id="d1" binding="#{backingBeanScope.backing_Signup.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_Signup.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_Signup.f1}">
+            <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.backing_Signup.psl1}">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_Signup.pfl1}">
+                        <f:facet name="footer">
+                            <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_Signup.pgl1}"
+                                                 layout="horizontal" valign="middle" halign="center">
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="Create User"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b2"
+                                           binding="#{backingBeanScope.backing_Signup.b2}"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="Submit"
+                                           disabled="#{!bindings.Commit.enabled}" id="b1"
+                                           binding="#{backingBeanScope.backing_Signup.b1}"/>
+                                <f:facet name="separator">
+                                    <af:separator id="s1" binding="#{backingBeanScope.backing_Signup.s1}"
+                                                  inlineStyle="Width:5px"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <af:inputText value="#{bindings.UserId.inputValue}" label="#{bindings.UserId.hints.label}"
+                                      required="#{bindings.UserId.hints.mandatory}"
+                                      columns="#{bindings.UserId.hints.displayWidth}"
+                                      maximumLength="#{bindings.UserId.hints.precision}"
+                                      shortDesc="#{bindings.UserId.hints.tooltip}" id="it1"
+                                      binding="#{backingBeanScope.backing_Signup.it1}" readOnly="true">
+                            <f:validator binding="#{bindings.UserId.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.UserId.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.UserName.inputValue}" label="#{bindings.UserName.hints.label}"
+                                      required="true"
+                                      columns="50"
+                                      maximumLength="#{bindings.UserName.hints.precision}"
+                                      shortDesc="#{bindings.UserName.hints.tooltip}" id="it2"
+                                      binding="#{backingBeanScope.backing_Signup.it2}" showRequired="true">
+                            <f:validator binding="#{bindings.UserName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.UserPassword.inputValue}"
+                                      label="#{bindings.UserPassword.hints.label}"
+                                      required="true"
+                                      columns="50"
+                                      maximumLength="#{bindings.UserPassword.hints.precision}"
+                                      shortDesc="#{bindings.UserPassword.hints.tooltip}" id="it3"
+                                      binding="#{backingBeanScope.backing_Signup.it3}" showRequired="true"
+                                      secret="true">
+                            <f:validator binding="#{bindings.UserPassword.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ConfirmPassword.inputValue}"
+                                      label="#{bindings.ConfirmPassword.hints.label}"
+                                      required="true"
+                                      columns="50"
+                                      maximumLength="#{bindings.ConfirmPassword.hints.precision}"
+                                      shortDesc="#{bindings.ConfirmPassword.hints.tooltip}" id="it4"
+                                      binding="#{backingBeanScope.backing_Signup.it4}" showRequired="true">
+                            <f:validator binding="#{bindings.ConfirmPassword.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.UserGroup.inputValue}" label="#{bindings.UserGroup.label}"
+                                            required="true"
+                                            shortDesc="#{bindings.UserGroup.hints.tooltip}" id="soc1"
+                                            binding="#{backingBeanScope.backing_Signup.soc1}">
+                            <f:selectItems value="#{bindings.UserGroup.items}" id="si1"
+                                           binding="#{backingBeanScope.backing_Signup.si1}"/>
+                            <f:validator binding="#{bindings.UserGroup.validator}"/>
+                        </af:selectOneChoice>
+                    </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_Signup-->
+</f:view>

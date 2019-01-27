@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.47" id="ManagerPageDef"
+                Package="ProjectManagementview.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProjectMasterView1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ProjectMasterView1Iterator"/>
+    <iterator Binds="ProjectRequestsView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ProjectRequestsView3Iterator"/>
+    <searchRegion Binds="ProjectMasterView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ProjectMasterView1Query"/>
+    <searchRegion Binds="ProjectRequestsView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ProjectRequestsView3Query"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ProjectMasterView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ProjectMasterView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="ProjectMasterView1Iterator" id="Status" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Pending"/>
+        <Item Value="Completed"/>
+        <Item Value="Cancelled"/>
+      </ValueList>
+    </list>
+    <list IterBinding="ProjectRequestsView3Iterator" id="Status1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Pending"/>
+        <Item Value="Cancelled"/>
+        <Item Value="Ongoing"/>
+        <Item Value="Re-Assigned"/>
+        <Item Value="Completed"/>
+      </ValueList>
+    </list>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action IterBinding="ProjectRequestsView3Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="ProjectRequestsView3Iterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="ProjectMasterView1Iterator" id="ProjectMasterView1">
+      <nodeDefinition DefName="ProjectManagementmodel.BC.VO.ProjectMasterView" Name="ProjectMasterView10">
+        <AttrNames>
+          <Item Value="ProjectCode"/>
+          <Item Value="ProjectName"/>
+          <Item Value="ProjectDescription"/>
+          <Item Value="Status" Binds="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ProjectRequestsView3Iterator" id="ProjectRequestsView3">
+      <nodeDefinition DefName="ProjectManagementmodel.BC.VO.ProjectRequestsView" Name="ProjectRequestsView30">
+        <AttrNames>
+          <Item Value="RequestId"/>
+          <Item Value="RequestDescription"/>
+          <Item Value="ProgrammerCode"/>
+          <Item Value="Status" Binds="Status1"/>
+          <Item Value="Assigned"/>
+          <Item Value="Started"/>
+          <Item Value="Completed"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

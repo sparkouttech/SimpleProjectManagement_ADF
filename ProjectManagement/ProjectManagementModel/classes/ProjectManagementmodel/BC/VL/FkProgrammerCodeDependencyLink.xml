@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FkProgrammerCodeDependencyLink"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  EntityAssociation="ProjectManagementmodel.BC.ASS.FkProgrammerCodeDependencyAssoc">
+  <ViewLinkDefEnd
+    Name="UsersView"
+    Cardinality="1"
+    Source="true"
+    Owner="ProjectManagementmodel.BC.VO.UsersView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="UsersView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.VO.UsersView.UserId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="DependencyRequestsView"
+    Cardinality="-1"
+    Owner="ProjectManagementmodel.BC.VO.DependencyRequestsView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="DependencyRequestsView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ProjectManagementmodel.BC.VO.DependencyRequestsView.ProgrammerCode"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>
